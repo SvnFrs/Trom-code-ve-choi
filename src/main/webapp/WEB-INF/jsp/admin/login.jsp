@@ -37,7 +37,7 @@
 
                 <!-- Create Post Form -->
 
-                <form action="<%=request.getContextPath()%>/admin/login" method="post" id="loginForm">
+                <form action="/admin/login" method="post" id="loginForm">
                     <div class="form-group">
                         <label for="username">Username</label>
                         <div class="input-group mb-3">

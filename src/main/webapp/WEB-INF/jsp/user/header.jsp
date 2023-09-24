@@ -61,7 +61,7 @@
                 if (loggedInHeader) {
                     out.print("#");
                 } else {
-                    out.print(request.getContextPath() + "/login");
+                    out.print("/login");
                 }
                %>">
                 <img src="<%
@@ -77,7 +77,7 @@
                         if (isUrl) {
                             out.print(userHeader.getAvatar());
                         } else {
-                            out.print(request.getContextPath() + "/public/media/user/" + userHeader.getID() + "/" + userHeader.getAvatar());
+                            out.print("/public/media/user/" + userHeader.getID() + "/" + userHeader.getAvatar());
                         }
                     } else {
                         out.print("https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png");

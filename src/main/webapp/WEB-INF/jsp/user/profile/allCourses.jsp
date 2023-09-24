@@ -23,9 +23,9 @@
 
         <!-- a course -->
         <div class="courseTaken">
-            <img src="<%out.print(request.getContextPath());%>/public/media/course/<%out.print(course.getID() + "/" + course.getImage());%>" alt="" class="courseImg">
+            <img src="/public/media/course/<%out.print(course.getID() + "/" + course.getImage());%>" alt="" class="courseImg">
             <div class="courseInfor">
-                <a href="<%out.print(request.getContextPath());%>/course/<%out.print(course.getID());%>">
+                <a href="/course/<%out.print(course.getID());%>">
                     <p class="courseName"><%out.print(course.getTitle());%></p>
                     <%
                         if (guest) {
@@ -61,7 +61,7 @@
                             if (CourseDB.checkCertificate(user.getID(), course.getID())) {
                                 String certificateName = CourseDB.getCertificateName(user.getID(), course.getID());
                         %>
-                        <a href="<%out.print(request.getContextPath());%>/public/media/certificate/<%out.print(certificateName);%>" target="_blank">View certificate</a>
+                        <a href="/public/media/certificate/<%out.print(certificateName);%>" target="_blank">View certificate</a>
                         <%
                             }
                         %>
@@ -95,9 +95,9 @@
 
         <!-- a course -->
         <div class="courseTaken">
-            <img src="<%out.print(request.getContextPath());%>/public/media/course/<%out.print(course.getID() + "/" + course.getImage());%>" alt="" class="courseImg">
+            <img src="/public/media/course/<%out.print(course.getID() + "/" + course.getImage());%>" alt="" class="courseImg">
             <div class="courseInfor">
-                <a href="<%out.print(request.getContextPath());%>/course/<%out.print(course.getID());%>">
+                <a href="/course/<%out.print(course.getID());%>">
                     <p class="courseName"><%out.print(course.getTitle());%></p>
                     <div class="rate">
                         <span><%out.print(course.getRate());%></span>

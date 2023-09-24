@@ -48,7 +48,7 @@
                 <h5><%out.print(QuestionDB.getNumberQuestionByLessonID(lesson.getID()));%> questions</h5>
             </div>
 
-            <div class="finishBtn"><a href="<%out.print(request.getContextPath());%>/startAQuiz/<%out.print(lesson.getID());%>"><p>Take Quiz</p></a></div>
+            <div class="finishBtn"><a href="/startAQuiz/<%out.print(lesson.getID());%>"><p>Take Quiz</p></a></div>
         </div>
     </form>
 </div>

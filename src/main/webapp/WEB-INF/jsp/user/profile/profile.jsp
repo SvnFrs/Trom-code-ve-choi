@@ -83,7 +83,7 @@
                                         if (isUrl) {
                                             out.print(user.getAvatar());
                                         } else {
-                                            out.print(request.getContextPath() + "/public/media/user/" + user.getID() + "/" + user.getAvatar());
+                                            out.print("/public/media/user/" + user.getID() + "/" + user.getAvatar());
                                         }
                                     } else {
                                         out.print("https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png");

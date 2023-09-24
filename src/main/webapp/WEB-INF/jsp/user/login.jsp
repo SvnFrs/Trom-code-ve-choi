@@ -22,8 +22,8 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
               integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
               crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="stylesheet" href="<%out.print(request.getContextPath());%>/public/assets/css/login.css">
-        <link rel="stylesheet" href="<%out.print(request.getContextPath());%>/public/assets/css/toast.css">
+        <link rel="stylesheet" href="/public/assets/css/login.css">
+        <link rel="stylesheet" href="/public/assets/css/toast.css">
         <title>Login page</title>
     </head>
 
@@ -58,7 +58,7 @@
                     <div class="loginWithGG">
                         <a href="https://accounts.google.com/o/oauth2/auth?scope=https://www.googleapis.com/auth/userinfo.profile%20https://www.googleapis.com/auth/userinfo.email&redirect_uri=http://localhost:8080/loginWithGG&response_type=code
                            &client_id=246255507082-vpebidclj199n0sgg035cos2ijabjrmg.apps.googleusercontent.com&approval_prompt=force">
-                            <img src="<%out.print(request.getContextPath());%>/public/assets/imgs/logogoogle.png" alt="">
+                            <img src="/public/assets/imgs/logogoogle.png" alt="">
                             <p>Login with Google</p>
                         </a>
                     </div>

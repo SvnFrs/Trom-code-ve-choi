@@ -28,7 +28,7 @@
     User user = null;
     if (!CookieServices.checkUserLoggedIn(request.getCookies())) {
         request.getSession().setAttribute("error", "You must be logged in before enter this lesson!");
-        response.sendRedirect(request.getContextPath() + "/login");
+        response.sendRedirect("/login");
         return;
     } else {
         user = UserDB.getUserByUsername(CookieServices.getUserName(request.getCookies()));
@@ -98,7 +98,7 @@
         <jsp:include page="head.jsp">
             <jsp:param name="title" value="Yojihan Study"/>
         </jsp:include>
-        <link rel="stylesheet" href="<%out.print(request.getContextPath());%>/public/assets/css/lesson.css">
+        <link rel="stylesheet" href="/public/assets/css/lesson.css">
         <script src="https://www.youtube.com/iframe_api"></script>
     </head>
 
@@ -156,7 +156,7 @@
 
         <%@include file="foot.jsp" %>
 
-        <script src="<%out.print(request.getContextPath());%>/public/assets/js/lesson.js"></script>
+        <script src="/public/assets/js/lesson.js"></script>
         <script src="<%out.print(request.getContextPath());
         %>/public/assets/js/option.js"></script>
 

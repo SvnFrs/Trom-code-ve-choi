@@ -88,7 +88,7 @@
                                 }
                             } else {
                                 //if not logged in
-                                out.print("<a href=\"" + request.getContextPath() + "/login\">Add to cart</a>");
+                                out.print("<a href=\"/login\">Add to cart</a>");
                             }
 
                         %>
@@ -99,7 +99,7 @@
                             if (CourseDB.checkCertificate(user.getID(), course.getID())) {
                                 String certificateName = CourseDB.getCertificateName(user.getID(), course.getID());
                     %>
-                    <a href="<%out.print(request.getContextPath());%>/public/media/certificate/<%out.print(certificateName);%>" class="viewCer">View Certificate</a>
+                    <a href="/public/media/certificate/<%out.print(certificateName);%>" class="viewCer">View Certificate</a>
                     <%
                             }
                         }

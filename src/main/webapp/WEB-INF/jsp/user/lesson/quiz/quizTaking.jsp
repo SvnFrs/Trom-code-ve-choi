@@ -93,7 +93,7 @@
             </div>
 
             <div class="finishBtn">
-                <a href="<%out.print(request.getContextPath());%>/endAQuiz/<%out.print(quizResult.getID());%>">
+                <a href="/endAQuiz/<%out.print(quizResult.getID());%>">
                     <p>Finish</p>
                 </a>
             </div>

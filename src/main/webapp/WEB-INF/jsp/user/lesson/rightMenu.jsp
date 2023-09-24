@@ -35,7 +35,7 @@
             %>
 
             <!-- Start lesson -->
-            <a href="<%out.print(request.getContextPath() + "/learn/" + course.getID() + "/" + lesson1.getID());%>">
+            <a href="<%out.print("/learn/" + course.getID() + "/" + lesson1.getID());%>">
                 <div class="lesson<%if (lesson1.getID() == lesson.getID()) {
                         out.print(" active");
                     }%>">

@@ -110,7 +110,7 @@
         <div class="comments">
             <!-- start a comment -->
             <div class="comment">
-                <img src="<%out.print(request.getContextPath());%>/public/assets/imgs/D1.jpg" alt="" class="userAvatar">
+                <img src="/public/assets/imgs/D1.jpg" alt="" class="userAvatar">
                 <div class="commentContent">
                     <p class="userName">Nguyen Thanh Duong</p>
                     <p class="content">
@@ -131,7 +131,7 @@
             </div>
             <!-- end a comment -->
             <div class="comment">
-                <img src="<%out.print(request.getContextPath());%>/public/assets/imgs/instructor.png" alt="" class="userAvatar">
+                <img src="/public/assets/imgs/instructor.png" alt="" class="userAvatar">
                 <div class="commentContent">
                     <p class="userName">Nguyen Thanh Duong</p>
                     <p class="content">
@@ -152,7 +152,7 @@
             </div>
             <!-- end a comment -->
             <div class="comment">
-                <img src="<%out.print(request.getContextPath());%>/public/assets/imgs/logo.png" alt="" class="userAvatar">
+                <img src="/public/assets/imgs/logo.png" alt="" class="userAvatar">
                 <div class="commentContent">
                     <p class="userName">Nguyen Thanh Duong</p>
                     <p class="content">
@@ -267,7 +267,7 @@
     <div class="rating-comments">
         <!-- start a rating -->
         <div class="rating-content">
-            <img src="<%out.print(request.getContextPath());%>/public/assets/imgs/gg.png" alt="" class="rateUserImg">
+            <img src="/public/assets/imgs/gg.png" alt="" class="rateUserImg">
             <div class="content">
                 <p class="UserRateName">
                     Google
@@ -288,7 +288,7 @@
         <!-- end a rating -->
         <!-- start a rating -->
         <div class="rating-content">
-            <img src="<%out.print(request.getContextPath());%>/public/assets/imgs/gg.png" alt="" class="rateUserImg">
+            <img src="/public/assets/imgs/gg.png" alt="" class="rateUserImg">
             <div class="content">
                 <p class="UserRateName">
                     Google
@@ -309,7 +309,7 @@
         <!-- end a rating -->
         <!-- start a rating -->
         <div class="rating-content">
-            <img src="<%out.print(request.getContextPath());%>/public/assets/imgs/gg.png" alt="" class="rateUserImg">
+            <img src="/public/assets/imgs/gg.png" alt="" class="rateUserImg">
             <div class="content">
                 <p class="UserRateName">
                     Google

@@ -122,7 +122,7 @@
             </div>
 
             <div class="finishBtn">
-                <a href="<%out.print(request.getContextPath());%>/startAQuiz/<%out.print(lesson.getID());%>">
+                <a href="/startAQuiz/<%out.print(lesson.getID());%>">
                     <p>Retake</p>
                 </a>
             </div>

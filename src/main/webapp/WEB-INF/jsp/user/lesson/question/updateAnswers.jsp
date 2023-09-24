@@ -15,6 +15,6 @@
             }
         }
 
-        fetch("<%out.print(request.getContextPath());%>/updateQuestionResult/<%out.print(quizResult.getID());%>/" + questionID.slice(8) + "/" + paramsSend, {method: 'POST'}).catch(error => console.error(error));
+        fetch("/updateQuestionResult/<%out.print(quizResult.getID());%>/" + questionID.slice(8) + "/" + paramsSend, {method: 'POST'}).catch(error => console.error(error));
     }
 </script>
