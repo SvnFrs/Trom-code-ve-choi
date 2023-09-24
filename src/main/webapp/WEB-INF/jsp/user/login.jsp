@@ -5,7 +5,7 @@
 
 <%
     if (CookieServices.checkUserLoggedIn(request.getCookies())) {
-        response.sendRedirect("./main");
+        response.sendRedirect("./");
         return;
     }
 

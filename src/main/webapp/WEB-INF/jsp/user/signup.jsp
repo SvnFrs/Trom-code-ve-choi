@@ -14,7 +14,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     if (CookieServices.checkUserLoggedIn(request.getCookies())) {
-        response.sendRedirect("./main");
+        response.sendRedirect("./");
         return;
     }
 

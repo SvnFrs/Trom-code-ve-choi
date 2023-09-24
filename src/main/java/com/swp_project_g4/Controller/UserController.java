@@ -64,7 +64,7 @@ public class UserController {
                     cookie.setMaxAge(60 * 60 * 6);
                     request.getSession().setAttribute("success", "Login succeed!");
                     response.addCookie(cookie);
-                    return "redirect:./main";
+                    return "redirect:./";
                 }
 
                 user = new User(googlePojo);
@@ -153,7 +153,7 @@ public class UserController {
 
         if (user1 == null) {
             request.getSession().setAttribute("error", "User not exist!");
-            return "redirect:./main";
+            return "redirect:./";
         }
 
         user1.setFirstName(user.getFirstName());
@@ -191,7 +191,7 @@ public class UserController {
         cookie.setMaxAge(60 * 60 * 6);
         request.getSession().setAttribute("success", "Login succeed!");
         response.addCookie(cookie);
-        return "redirect:./main";
+        return "redirect:./";
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
@@ -211,7 +211,7 @@ public class UserController {
     public String selfProfile(ModelMap model, HttpServletRequest request, HttpServletResponse response) {
         //check logged in
         if (!CookieServices.checkUserLoggedIn(request.getCookies())) {
-            return "redirect:./main";
+            return "redirect:./";
         }
 
         User user = UserDB.getUserByUsername(CookieServices.getUserName(request.getCookies()));
@@ -373,7 +373,7 @@ public class UserController {
         } catch (NumberFormatException e) {
             System.out.println(e);
             request.getSession().setAttribute("error", "There are some error!");
-            return "redirect:./main";
+            return "redirect:./";
         } catch (Exception ex) {
             Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -509,12 +509,12 @@ public class UserController {
         //check quizResult exist
         QuizResult quizResult = QuizResultDB.getQuizResult(quizResultID);
         if (quizResult == null) {
-            return "redirect:../main";
+            return "redirect:../";
         }
 
         //check owner
         if (quizResult.getUserID() != user.getID()) {
-            return "redirect:../main";
+            return "redirect:../";
         }
 
         Lesson lesson = LessonDB.getLesson(quizResult.getLessonID());
