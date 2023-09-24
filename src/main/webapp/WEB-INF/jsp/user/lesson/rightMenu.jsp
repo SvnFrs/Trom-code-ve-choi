@@ -54,7 +54,6 @@
                         <span class="description">
                             <span class="type">
                                 <%
-                                    System.out.println(lesson1.getType());
                                     //print out icon
                                     switch (lesson1.getType()) {
                                         case 0:
