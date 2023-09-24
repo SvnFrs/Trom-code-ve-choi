@@ -28,7 +28,7 @@
         }
     } catch (Exception e) {
         request.getSession().setAttribute("error", "The course not exist!");
-        response.sendRedirect(request.getContextPath() + "/main");
+        response.sendRedirect("/");
         return;
     }
 
@@ -49,8 +49,8 @@
         <jsp:include page="head.jsp">
             <jsp:param name="title" value="Course Infomation"/>
         </jsp:include>
-        <link rel="stylesheet" href="${contextPath}/public/assets/css/courseInfo.css">
-        <link rel="stylesheet" href="${contextPath}/public/assets/css/responsive.css">
+        <link rel="stylesheet" href="/public/assets/css/courseInfo.css">
+        <link rel="stylesheet" href="/public/assets/css/responsive.css">
     </head>
 
     <body>
@@ -62,7 +62,7 @@
             <div class="courseMain">
                 <div class="courseIntroduction">
                     <div class="orgranization">
-                        <img src="${contextPath}/public/media/organization/<%out.print(organization.getID() + "/" + organization.getLogo());%>" alt="">
+                        <img src="/public/media/organization/<%out.print(organization.getID() + "/" + organization.getLogo());%>" alt="">
                     </div>
                     <div class="courseName">
                         <h1><%out.print(course.getTitle());%></h1>
@@ -70,7 +70,7 @@
                     <div class="instructorInfor">
                         <img src=<%out.print(request.getContextPath() + "/public/media/user/" + lecturer.getID() + "/" + lecturer.getAvatar());%> alt="" class="instructorImg">
                         <p class="instructorName">
-                            Instructor: <a href="${contextPath}/profile/<%out.print(lecturer.getUsername());%>"><%out.print(lecturer.getFirstName() + " " + lecturer.getLastName());%></a></p>
+                            Instructor: <a href="/profile/<%out.print(lecturer.getUsername());%>"><%out.print(lecturer.getFirstName() + " " + lecturer.getLastName());%></a></p>
                     </div>
                     <div class="price">
                         Price: <span><%out.print(course.getPrice());%>$</span>
@@ -253,7 +253,7 @@
                         <div class="rating-comments">
                             <!-- start a rating -->
                             <div class="rating-content">
-                                <img src="${contextPath}/public/assets/imgs/gg.png" alt="" class="rateUserImg">
+                                <img src="/public/assets/imgs/gg.png" alt="" class="rateUserImg">
                                 <div class="content">
                                     <p class="UserRateName">
                                         Google
@@ -274,7 +274,7 @@
                             <!-- end a rating -->
                             <!-- start a rating -->
                             <div class="rating-content">
-                                <img src="${contextPath}/public/assets/imgs/gg.png" alt="" class="rateUserImg">
+                                <img src="/public/assets/imgs/gg.png" alt="" class="rateUserImg">
                                 <div class="content">
                                     <p class="UserRateName">
                                         Google
@@ -295,7 +295,7 @@
                             <!-- end a rating -->
                             <!-- start a rating -->
                             <div class="rating-content">
-                                <img src="${contextPath}/public/assets/imgs/gg.png" alt="" class="rateUserImg">
+                                <img src="/public/assets/imgs/gg.png" alt="" class="rateUserImg">
                                 <div class="content">
                                     <p class="UserRateName">
                                         Google

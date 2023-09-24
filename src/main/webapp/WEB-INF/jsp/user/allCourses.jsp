@@ -16,8 +16,8 @@
         <jsp:include page="head.jsp">
             <jsp:param name="title" value="All Courses"/>
         </jsp:include>
-        <link rel="stylesheet" href="${contextPath}/public/assets/css/courseShop.css">
-        <link rel="stylesheet" href="${contextPath}/public/assets/css/responsive.css">
+        <link rel="stylesheet" href="/public/assets/css/courseShop.css">
+        <link rel="stylesheet" href="/public/assets/css/responsive.css">
     </head>
 
     <body>
@@ -32,7 +32,7 @@
                     <h1>Learn with Yojihan</h1>
                 </div>
                 <div class="teamWorkImg col-md-6">
-                    <img src="${contextPath}/public/assets/imgs/teamwork.png" alt="">
+                    <img src="/public/assets/imgs/teamwork.png" alt="">
                 </div>
             </div>
             <div class="allCourse">
@@ -50,7 +50,7 @@
                             %>
                             <li class="listItem">
                                 <a href="./course/<%out.print(course.getID());%>">
-                                    <img src="${contextPath}/public/media/course/<%out.print(course.getID() + "/" + course.getImage());%>" alt="" class="courseImg">
+                                    <img src="/public/media/course/<%out.print(course.getID() + "/" + course.getImage());%>" alt="" class="courseImg">
                                     <h4 class="courseName"><%out.print(course.getTitle());%></h4>
                                     <div class="courseDescription">
                                         <span class="type">

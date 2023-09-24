@@ -23,14 +23,14 @@
 
 <div id="header">
     <div class="left-side">
-        <a href="${contextPath}/main">
-            <img src="${contextPath}/public/assets/imgs/logo.png" alt="logo" class="logo">
+        <a href="/">
+            <img src="/public/assets/imgs/logo.png" alt="logo" class="logo">
         </a>
         <form action="">
             <input type="text" class="search-course" name="headerSearch" placeholder="Searching">
         </form>
         <div class="course-opption">
-            <a href="${contextPath}/allCourses">Courses</a>
+            <a href="/allCourses">Courses</a>
         </div>
         <div class="quesAndAns">
             <a href="#">Expert Q&A</a>
@@ -38,7 +38,7 @@
     </div>
 
     <div class="right-side">
-        <a href="${contextPath}/cart" class="cart">
+        <a href="/cart" class="cart">
             <i class="fa-solid fa-cart-shopping"></i>
             <%
                 int numberOfOrderHeader = 0;
@@ -97,7 +97,7 @@
                 if (loggedInHeader) {
             %>
             <div id="userMenu" class="userMenu close">
-                <a href="${contextPath}/profile/<%out.print(userHeader.getUsername());%>">
+                <a href="/profile/<%out.print(userHeader.getUsername());%>">
                     <i class="fa-solid fa-user"></i>
                     <span>Profile</span>
                 </a>
@@ -105,7 +105,7 @@
                     <i class="fa-solid fa-gear"></i>
                     <span>Setting</span>
                 </a>
-                <a href="${contextPath}/logout">
+                <a href="/logout">
                     <i class="fa-solid fa-right-from-bracket"></i>
                     <span>Logout</span>
                 </a>
@@ -119,5 +119,5 @@
 </div>
 
 <%if (loggedInHeader) {%>
-<script src="${contextPath}/public/assets/js/option.js"></script>                    
+<script src="/public/assets/js/option.js"></script>                    
 <%}%>

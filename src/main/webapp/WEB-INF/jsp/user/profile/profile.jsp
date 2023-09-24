@@ -21,7 +21,7 @@
 
     if (user == null) {
         request.getSession().setAttribute("error", "Not exist this username!");
-        response.sendRedirect(request.getContextPath() + "/main");
+        response.sendRedirect("/");
         return;
     }
 
@@ -45,8 +45,8 @@
         <jsp:include page="../head.jsp">
             <jsp:param name="title" value="Yojihan"/>
         </jsp:include>
-        <link rel="stylesheet" href="${contextPath}/public/assets/css/profile.css">
-        <link rel="stylesheet" href="${contextPath}/public/assets/css/responsive.css">
+        <link rel="stylesheet" href="/public/assets/css/profile.css">
+        <link rel="stylesheet" href="/public/assets/css/responsive.css">
     </head>
 
     <body>
@@ -101,7 +101,7 @@
                                         Organization organization = OrganizationDB.getOrganization(lecturer.getOrganizationID());
                                 %>
                                 <p>Lecturer of <%out.print(organization.getName());%></p>
-                                <img class="org" src="${contextPath}/public/media/organization/<%out.print(organization.getID() + "/" + organization.getLogo());%>" alt="">
+                                <img class="org" src="/public/media/organization/<%out.print(organization.getID() + "/" + organization.getLogo());%>" alt="">
                                 <%
                                     }
                                 %>
@@ -152,7 +152,7 @@
 
                         <p>Let the Yojihan community of other learners and instructors know more about you!</p>
 
-                        <form action="${contextPath}/updateUser?userID=${user.ID}" method="post">
+                        <form action="/updateUser?userID=${user.ID}" method="post">
                             <div>
                                 <label for="firstName">First name:</label>
                                 <input value="${user.firstName}" type="text" id="firstName" name="firstName" placeholder="Enter your first name" required>
@@ -207,8 +207,8 @@
 
         <%@include file="../foot.jsp" %>
 
-        <script src="${contextPath}/public/assets/js/lesson.js"></script>
-        <script src="${contextPath}/public/assets/js/option.js"></script>
+        <script src="/public/assets/js/lesson.js"></script>
+        <script src="/public/assets/js/option.js"></script>
 
         <%@include file="../popUpMessage.jsp" %>
 

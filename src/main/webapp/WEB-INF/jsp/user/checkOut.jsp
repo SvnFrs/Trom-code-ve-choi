@@ -37,7 +37,7 @@
         <jsp:include page="head.jsp">
             <jsp:param name="title" value="Cart"/>
         </jsp:include>
-        <link rel="stylesheet" href="${contextPath}/public/assets/css/checkout.css">
+        <link rel="stylesheet" href="/public/assets/css/checkout.css">
     </head>
 
     <body>
@@ -46,7 +46,7 @@
         <!--END HEADER -->
 
         <div id="body-checkout">
-            <form method="post" action="${contextPath}/checkOutWithPayment?price=<%
+            <form method="post" action="/checkOutWithPayment?price=<%
                 out.print(price);
                 for (Course course : courses) {
                     out.print("&course=" + course.getID());
@@ -106,7 +106,7 @@
 
         <%@include file="foot.jsp" %>
 
-        <script src="${contextPath}/public/assets/js/cart.js"></script>
+        <script src="/public/assets/js/cart.js"></script>
 
         <%@include file="popUpMessage.jsp" %>
 

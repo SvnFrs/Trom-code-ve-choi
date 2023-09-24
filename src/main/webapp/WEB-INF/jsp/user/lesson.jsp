@@ -43,7 +43,7 @@
             throw new Exception("Not exist course!");
         }
     } catch (Exception e) {
-        response.sendRedirect(request.getContextPath() + "/main");
+        response.sendRedirect("/");
         return;
     }
 
@@ -65,7 +65,7 @@
         //if have no lesson in this course
         if (lessonID < 0) {
             request.getSession().setAttribute("error", "There is no lesson in this course!");
-            response.sendRedirect(request.getContextPath() + "/main");
+            response.sendRedirect("/");
             return;
         }
         lesson = LessonDB.getLesson(lessonID);
@@ -75,7 +75,7 @@
     //check match lessonID with courseID
     if (mooc != null && mooc.getCourseID() != course.getID()) {
         request.getSession().setAttribute("error", "Not exist the this lesson in the course!");
-        response.sendRedirect(request.getContextPath() + "/main");
+        response.sendRedirect("/");
         return;
     }
 
@@ -86,7 +86,7 @@
             throw new Exception("Not purchased course yet!");
         }
     } catch (Exception e) {
-        response.sendRedirect(request.getContextPath() + "/main");
+        response.sendRedirect("/");
         return;
     }
 %>

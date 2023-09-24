@@ -11,7 +11,7 @@
     <div class="contact row">
         <div class="introduction col-md-6">
             <div class="logo-name">
-                <img src="${contextPath}/public/assets/imgs/logo.png" alt="">
+                <img src="/public/assets/imgs/logo.png" alt="">
                 <h2>Yojihan</h2>
             </div>
             <p>

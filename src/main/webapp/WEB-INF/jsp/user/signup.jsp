@@ -33,13 +33,13 @@
         <jsp:include page="head.jsp">
             <jsp:param name="title" value="Login page"/>
         </jsp:include>
-        <link rel="stylesheet" href="${contextPath}/public/assets/css/signup.css">
+        <link rel="stylesheet" href="/public/assets/css/signup.css">
     </head>
     
     <body>
         <div id="main">
             <div class="box">
-                <form action="${contextPath}/signup" method="post" id="signUpForm" class="needs-validation">
+                <form action="/signup" method="post" id="signUpForm" class="needs-validation">
                     <input type="text" required="required" name="avatar" value="${user.avatar}" style="display: none">
 
                     <h2>Sign up</h2>
@@ -102,7 +102,7 @@
 
         <%@include file="foot.jsp" %>
 
-        <script src="${contextPath}/public/assets/js/signup.js"></script>
+        <script src="/public/assets/js/signup.js"></script>
 
         <%@include file="popUpMessage.jsp" %>
     </body>

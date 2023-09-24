@@ -226,7 +226,7 @@ public class UserController {
         return "user/profile/profile";
     }
 
-    @RequestMapping(value = "/main", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public String mainPage(ModelMap model) {
         return "user/main";
     }

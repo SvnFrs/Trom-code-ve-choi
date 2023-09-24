@@ -30,7 +30,7 @@
         <jsp:include page="head.jsp">
             <jsp:param name="title" value="Cart"/>
         </jsp:include>
-        <link rel="stylesheet" href="${contextPath}/public/assets/css/paysite.css">
+        <link rel="stylesheet" href="/public/assets/css/paysite.css">
     </head>
 
     <body>
@@ -49,8 +49,8 @@
                 </h4>
                 <!-- When cart is empty display this -->
                 <div class="keepShopping ">
-                    <!-- <video src="${contextPath}/public/assets/videos/DoggieCorgi-4.mp4"></video> -->
-                    <img src="${contextPath}/public/assets/imgs/logoooooo.png" alt="" class="description-img">
+                    <!-- <video src="/public/assets/videos/DoggieCorgi-4.mp4"></video> -->
+                    <img src="/public/assets/imgs/logoooooo.png" alt="" class="description-img">
                     <h5>Your cart is empty, keeping shopping to find a course!</h5>
                     <div class="keepshopping-btn"><a href="">Keep Shopping</a></div>
                 </div>
@@ -69,8 +69,8 @@
                         <div class="item">
                             <input type="checkbox" id="course<%out.print(courseIndex);%>" name="course" value="<%out.print(course.getID());%>">
 
-                            <a href="${contextPath}/course/<%out.print(course.getID());%>">
-                                <img src="${contextPath}/public/media/course/<%out.print(course.getID() + "/" + course.getImage());%>" class="itemImg" alt="">
+                            <a href="/course/<%out.print(course.getID());%>">
+                                <img src="/public/media/course/<%out.print(course.getID() + "/" + course.getImage());%>" class="itemImg" alt="">
                                 <div class="itemInformation">
                                     <p class="itemName"><%out.print(course.getTitle());%></p>
                                     <div class="itemRating"><%out.print(course.getRate());%><i class="fa-solid fa-star"></i> (2503 reviewer)</div>
@@ -116,7 +116,7 @@
 
         <%@include file="foot.jsp" %>
 
-        <script src="${contextPath}/public/assets/js/cart.js"></script>
+        <script src="/public/assets/js/cart.js"></script>
 
         <%@include file="popUpMessage.jsp" %>
 
