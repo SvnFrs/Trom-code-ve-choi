@@ -9,15 +9,13 @@
 <%@page import="com.swp_project_g4.Model.Course"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.swp_project_g4.Model.Organization"%>
-<%@page import="com.swp_project_g4.Database.LecturerDB"%>
-<%@page import="com.swp_project_g4.Database.OrganizationDB"%>
-<%@page import="com.swp_project_g4.Database.CountryDB"%>
+<%@ page import="com.swp_project_g4.Database.*" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%
     //get user that want to show profile
     String profileUsername = (String) request.getAttribute("username");
-    User user = UserDB.getUserByUsername(profileUsername);
+    User user = UserDAO.getUserByUsername(profileUsername);
 
     if (user == null) {
         request.getSession().setAttribute("error", "Not exist this username!");
@@ -28,14 +26,14 @@
     boolean guest = true;
     //Get user loggedIn
     if (CookieServices.checkUserLoggedIn(request.getCookies())) {
-        User userLoggedin = UserDB.getUserByUsername(CookieServices.getUserName(request.getCookies()));
+        User userLoggedin = UserDAO.getUserByUsername(CookieServices.getUserName(request.getCookies()));
         guest = (userLoggedin == null || user.getID() != userLoggedin.getID());
     }
 
     request.getSession().setAttribute("guest", guest);
     request.getSession().setAttribute("user", user);
 
-    Lecturer lecturer = LecturerDB.getLecturer(user.getID());
+    Lecturer lecturer = LecturerDAO.getLecturer(user.getID());
 %>
 
 <!DOCTYPE html>
@@ -95,10 +93,10 @@
                             </div>
 
                             <div class="orgranization">
-                                <p><%out.print(CountryDB.getCountry(user.getCountryID()).getName());%></p>
+                                <p><%out.print(CountryDAO.getCountry(user.getCountryID()).getName());%></p>
                                 <%
                                     if (lecturer != null) {
-                                        Organization organization = OrganizationDB.getOrganization(lecturer.getOrganizationID());
+                                        Organization organization = OrganizationDAO.getOrganization(lecturer.getOrganizationID());
                                 %>
                                 <p>Lecturer of <%out.print(organization.getName());%></p>
                                 <img class="org" src="/public/media/organization/<%out.print(organization.getID() + "/" + organization.getLogo());%>" alt="">
@@ -120,15 +118,15 @@
                             <h4>Experience</h4>
                             <p class="element"><i class="fa-sharp fa-regular fa-clock"></i>Total learning hours
                                 <span><%
-                                    int sumTimeCompletedInMinute = CourseDB.getSumTimeCompletedOfAllCourses(user.getID());
+                                    int sumTimeCompletedInMinute = CourseDAO.getSumTimeCompletedOfAllCourses(user.getID());
                                     out.print(Math.round(sumTimeCompletedInMinute / 6.0) / 10.0);
                                     %></span>
                             </p>
-                            <p class="element"><i class="fa-solid fa-cart-shopping"></i>Courses purchased<span><%out.print(CourseDB.getNumberPurchasedCourse(user.getID()));%></span></p>
-                            <p class="element"><i class="fa-regular fa-circle-check"></i>Courses completed <span><%out.print(CourseDB.getNumberCompletedCourse(user.getID()));%></span>
+                            <p class="element"><i class="fa-solid fa-cart-shopping"></i>Courses purchased<span><%out.print(CourseDAO.getNumberPurchasedCourse(user.getID()));%></span></p>
+                            <p class="element"><i class="fa-regular fa-circle-check"></i>Courses completed <span><%out.print(CourseDAO.getNumberCompletedCourse(user.getID()));%></span>
                             </p>
                             <p class="element"><i class="fa-sharp fa-solid fa-certificate"></i>Courses created
-                                <span><%out.print(CourseDB.getNumberCreatedCourse(user.getID()));%></span>
+                                <span><%out.print(CourseDAO.getNumberCreatedCourse(user.getID()));%></span>
                             </p>
                             <p class="element">Learn since 2020</p>
                         </div>
@@ -167,7 +165,7 @@
                                 <input value="${user.birthday}" type="date" id="birthday" name="birthday" placeholder="dd/mm/yyyy" required>
                             </div>
 
-                            <%                                ArrayList<Country> countries = CountryDB.getAllCountry();
+                            <%                                ArrayList<Country> countries = CountryDAO.getAllCountry();
                                 request.getSession().setAttribute("countries", countries);
                                 %>
 

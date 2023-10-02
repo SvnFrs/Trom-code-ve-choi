@@ -14,7 +14,7 @@ import java.util.logging.Logger;
  *
  * @author Thanh Duong
  */
-public class PostDB extends DB {
+public class PostDAO extends DBConnection {
 
     public static boolean existPost(int ID) {
         boolean ok = false;
@@ -35,7 +35,7 @@ public class PostDB extends DB {
             //disconnect to database
             disconnect();
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(UserDB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         //return result
         return ok;
@@ -61,7 +61,7 @@ public class PostDB extends DB {
 
             disconnect();
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(DB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return post;
@@ -87,7 +87,7 @@ public class PostDB extends DB {
 
             disconnect();
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(DB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return post;
@@ -107,7 +107,7 @@ public class PostDB extends DB {
             return true;
 
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(DB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
 
         }
         return false;
@@ -129,7 +129,7 @@ public class PostDB extends DB {
             return true;
 
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(DB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
     }
@@ -150,7 +150,7 @@ public class PostDB extends DB {
                 return false;
             }
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(DB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
     }

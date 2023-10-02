@@ -4,7 +4,8 @@
     Author     : TTNhan
 --%>
 
-<%@page import="com.swp_project_g4.Database.QuestionDB"%>
+<%@page import="com.swp_project_g4.Database.QuestionDAO"%>
+<%@ page import="com.swp_project_g4.Database.QuestionDAO" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <div class="quiz-type1">
     <form action="" method="post">
@@ -45,7 +46,7 @@
                     %></span>
             </div>
             <div class="listQuestion">
-                <h5><%out.print(QuestionDB.getNumberQuestionByLessonID(lesson.getID()));%> questions</h5>
+                <h5><%out.print(QuestionDAO.getNumberQuestionByLessonID(lesson.getID()));%> questions</h5>
             </div>
 
             <div class="finishBtn"><a href="/startAQuiz/<%out.print(lesson.getID());%>"><p>Take Quiz</p></a></div>

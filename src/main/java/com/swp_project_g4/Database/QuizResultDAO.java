@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  *
  * @author Thanh Duong
  */
-public class QuizResultDB extends DB {
+public class QuizResultDAO extends DBConnection {
 
     public static boolean existQuizResult(int ID) {
         boolean ok = false;
@@ -38,7 +38,7 @@ public class QuizResultDB extends DB {
             //disconnect to database
             disconnect();
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(UserDB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         //return result
         return ok;
@@ -67,7 +67,7 @@ public class QuizResultDB extends DB {
 
             disconnect();
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(DB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return quizResult;
@@ -80,12 +80,12 @@ public class QuizResultDB extends DB {
             return 0;
         }
 
-        ArrayList<Question> questions = QuestionDB.getQuestionByLessonID(quizResult.getLessonID());
+        ArrayList<Question> questions = QuestionDAO.getQuestionByLessonID(quizResult.getLessonID());
 
         int point = 0;
 
         for (Question question : questions) {
-            if (QuestionResultDB.CheckQuestionResultCorrect(quizResult.getID(), question.getID())) {
+            if (QuestionResultDAO.CheckQuestionResultCorrect(quizResult.getID(), question.getID())) {
                 point++;
             }
         }
@@ -117,7 +117,7 @@ public class QuizResultDB extends DB {
 
             disconnect();
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(DB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return quizResult;
@@ -146,7 +146,7 @@ public class QuizResultDB extends DB {
             return newID;
 
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(DB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
 
         }
         return -1;
@@ -173,7 +173,7 @@ public class QuizResultDB extends DB {
             return true;
 
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(DB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
     }
@@ -190,7 +190,7 @@ public class QuizResultDB extends DB {
             disconnect();
             return !existQuizResult(ID);
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(DB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
     }

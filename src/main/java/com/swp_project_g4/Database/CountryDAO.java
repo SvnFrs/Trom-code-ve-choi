@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  *
  * @author TTNhan
  */
-public class CountryDB extends DB {
+public class CountryDAO extends DBConnection {
 
     public static Country getCountry(int ID) {
         Country country = null;
@@ -34,7 +34,7 @@ public class CountryDB extends DB {
 
             disconnect();
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(DB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return country;
@@ -57,7 +57,7 @@ public class CountryDB extends DB {
 
             disconnect();
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(DB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return countries;

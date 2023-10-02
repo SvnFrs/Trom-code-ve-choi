@@ -4,11 +4,9 @@
     Author     : TTNhan
 --%>
 
-<%@page import="com.swp_project_g4.Database.OrganizationDB"%>
 <%@page import="com.swp_project_g4.Model.Organization"%>
-<%@page import="com.swp_project_g4.Database.LecturerDB"%>
-<%@page import="com.swp_project_g4.Database.CourseDB"%>
 <%@page import="com.swp_project_g4.Model.Course"%>
+<%@ page import="com.swp_project_g4.Database.*" %>
 <%-- 
     Document   : allCourse
     Created on : Jul 4, 2023, 9:20:17 PM
@@ -22,7 +20,7 @@
     //check course exist
     Course course = null;
     try {
-        course = CourseDB.getCourse((int) request.getAttribute("courseID"));
+        course = CourseDAO.getCourse((int) request.getAttribute("courseID"));
         if (course == null) {
             throw new Exception("Not exist course!");
         }
@@ -32,13 +30,13 @@
         return;
     }
 
-    User lecturer = UserDB.getUser(course.getLecturerID());
+    User lecturer = com.swp_project_g4.Database.UserDAO.getUser(course.getLecturerID());
 
-    Organization organization = OrganizationDB.getOrganization(course.getOrganizationID());
+    Organization organization = OrganizationDAO.getOrganization(course.getOrganizationID());
 
     User user = null;
     if (CookieServices.checkUserLoggedIn(request.getCookies())) {
-        user = UserDB.getUserByUsername(CookieServices.getUserName(request.getCookies()));
+        user = UserDAO.getUserByUsername(CookieServices.getUserName(request.getCookies()));
     }
 %>
 
@@ -79,9 +77,9 @@
                     <div class="addCartBnt">
                         <%
                             if (user != null) {
-                                if (CourseDB.checkPurchasedCourse(user.getID(), course.getID())) {
+                                if (CourseDAO.checkPurchasedCourse(user.getID(), course.getID())) {
                                     out.print("<a href=\"../learn/" + course.getID() + "\">Learn now</a>");
-                                } else if (CourseDB.checkOrderCourse(user.getID(), course.getID())) {
+                                } else if (CourseDAO.checkOrderCourse(user.getID(), course.getID())) {
                                     out.print("<a href=\"./deleteOrder/" + course.getID() + "\">Delete from cart</a>");
                                 } else {
                                     out.print("<a href=\"./addOrder/" + course.getID() + "\">Add to cart</a>");
@@ -96,8 +94,8 @@
                         <!--<a href="#">Add to cart</a>-->
                     </div>
                     <%                        if (user != null) {
-                            if (CourseDB.checkCertificate(user.getID(), course.getID())) {
-                                String certificateName = CourseDB.getCertificateName(user.getID(), course.getID());
+                            if (CourseDAO.checkCertificate(user.getID(), course.getID())) {
+                                String certificateName = CourseDAO.getCertificateName(user.getID(), course.getID());
                     %>
                     <a href="/public/media/certificate/<%out.print(certificateName);%>" class="viewCer">View Certificate</a>
                     <%
@@ -105,7 +103,7 @@
                         }
                     %>
                     <p class="enrollers">
-                        <span><%out.print(CourseDB.getNumberPurchasedOfCourse(course.getID()));%></span> already enrolled
+                        <span><%out.print(CourseDAO.getNumberPurchasedOfCourse(course.getID()));%></span> already enrolled
                     </p>
                 </div>
 
@@ -126,7 +124,7 @@
                     </div>
 
                     <p class="time"><%
-                        int sumTimeInMinute = CourseDB.getSumTimeOfCourse(course.getID());
+                        int sumTimeInMinute = CourseDAO.getSumTimeOfCourse(course.getID());
                         out.print(Math.round(sumTimeInMinute / 6.0) / 10.0);
                         %> hours (approximately)</p>
 

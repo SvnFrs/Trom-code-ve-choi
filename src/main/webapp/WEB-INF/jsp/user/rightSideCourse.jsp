@@ -4,23 +4,24 @@
     Author     : TTNhan
 --%>
 
-<%@page import="com.swp_project_g4.Database.CourseDB"%>
+<%@page import="com.swp_project_g4.Database.CourseDAO"%>
 <%@page import="com.swp_project_g4.Model.Course"%>
-<%@page import="com.swp_project_g4.Database.MoocDB"%>
+<%@page import="com.swp_project_g4.Database.MoocDAO"%>
 <%@page import="com.swp_project_g4.Model.Mooc"%>
 <%@page import="com.swp_project_g4.Model.Lesson"%>
 <%@page import="com.swp_project_g4.Service.CookieServices"%>
-<%@page import="com.swp_project_g4.Database.UserDB"%>
+<%@page import="com.swp_project_g4.Database.UserDAO"%>
 <%@page import="com.swp_project_g4.Model.User"%>
-<%@page import="com.swp_project_g4.Database.LessonDB"%>
+<%@page import="com.swp_project_g4.Database.LessonDAO"%>
+<%@ page import="com.swp_project_g4.Database.LessonDAO" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%
 
-    User user1 = UserDB.getUserByUsername(CookieServices.getUserName(request.getCookies()));
-    Lesson lesson1 = LessonDB.getLesson(Integer.parseInt(request.getParameter("lessonID")));
-    Mooc mooc1 = MoocDB.getMooc(lesson1.getMoocID());
-    Course course1 = CourseDB.getCourse(mooc1.getCourseID());
+    User user1 = UserDAO.getUserByUsername(CookieServices.getUserName(request.getCookies()));
+    Lesson lesson1 = LessonDAO.getLesson(Integer.parseInt(request.getParameter("lessonID")));
+    Mooc mooc1 = MoocDAO.getMooc(lesson1.getMoocID());
+    Course course1 = CourseDAO.getCourse(mooc1.getCourseID());
     
 %>
 

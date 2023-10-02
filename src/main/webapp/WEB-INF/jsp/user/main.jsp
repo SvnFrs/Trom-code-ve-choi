@@ -4,7 +4,7 @@
     Author     : TTNhan
 --%>
 
-<%@page import="com.swp_project_g4.Database.CourseDB"%>
+<%@page import="com.swp_project_g4.Database.CourseDAO"%>
 <%@page import="com.swp_project_g4.Model.Course"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -67,7 +67,7 @@
                     <div class="carousel-inner">
 
                         <%
-                            ArrayList<Course> courses = CourseDB.getPopularCourses(12);
+                            ArrayList<Course> courses = CourseDAO.getPopularCourses(12);
                             int index = -1;
                             for (Course course : courses) {
                                 index++;
@@ -90,7 +90,7 @@
                                             <span class="type">
                                                 <span><%out.print(course.getDescription());%></span>
                                                 <span><%
-                                                    int sumTimeInMinute = CourseDB.getSumTimeOfCourse(course.getID());
+                                                    int sumTimeInMinute = CourseDAO.getSumTimeOfCourse(course.getID());
                                                     out.print(Math.round(sumTimeInMinute / 6.0) / 10.0);
                                                     %>h</span>
                                             </span>

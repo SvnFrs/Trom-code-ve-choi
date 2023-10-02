@@ -9,7 +9,7 @@
 <%
     //if have finished quiz
     quizFinished = true;
-    ArrayList<Question> questions = QuestionDB.getQuestionByLessonID(lesson.getID());
+    ArrayList<Question> questions = QuestionDAO.getQuestionByLessonID(lesson.getID());
 %>
 
 <div class="quiz-type1 finished">
@@ -108,11 +108,11 @@
                     %></span>
             </div>
             <div class="listQuestion">
-                <h5><%out.print(QuizResultDB.getQuizResultPoint(quizResult.getID()));%>/<%out.print(QuestionDB.getNumberQuestionByLessonID(lesson.getID()));%> corrects!</h5>
+                <h5><%out.print(QuizResultDAO.getQuizResultPoint(quizResult.getID()));%>/<%out.print(QuestionDAO.getNumberQuestionByLessonID(lesson.getID()));%> corrects!</h5>
                 <ul>
                     <%                        //show all questionLabel
                         for (int i = 1; i <= questions.size(); i++) {
-                            String correctClass = QuestionResultDB.CheckQuestionResultCorrect(quizResult.getID(), questions.get(i - 1).getID()) ? "correct" : "incorrect";
+                            String correctClass = QuestionResultDAO.CheckQuestionResultCorrect(quizResult.getID(), questions.get(i - 1).getID()) ? "correct" : "incorrect";
                     %>
                     <li class="<%out.print(correctClass);%>"><%out.print(i);%></li>
                         <%

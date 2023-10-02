@@ -6,14 +6,14 @@
 
 <%@page import="java.util.Date"%>
 <%@page import="com.swp_project_g4.Model.QuizResult"%>
-<%@page import="com.swp_project_g4.Database.QuizResultDB"%>
-<%@page import="com.swp_project_g4.Database.QuestionDB"%>
+<%@page import="com.swp_project_g4.Database.QuizResultDAO"%>
+<%@page import="com.swp_project_g4.Database.QuestionDAO"%>
 <%@page import="com.swp_project_g4.Model.Question"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%
-    QuizResult quizResult = QuizResultDB.getLastQuizResult(user.getID(), lesson.getID());
+    QuizResult quizResult = QuizResultDAO.getLastQuizResult(user.getID(), lesson.getID());
     boolean quizFinished = false;
     if (quizResult == null) {
         //If not take quiz yet

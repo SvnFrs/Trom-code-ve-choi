@@ -7,9 +7,7 @@ package com.swp_project_g4.Database;
 import com.swp_project_g4.Model.Lesson;
 import com.swp_project_g4.Model.Mooc;
 import com.swp_project_g4.Model.QuizResult;
-import com.swp_project_g4.Model.User;
 import com.swp_project_g4.Service.Certificate;
-import com.swp_project_g4.Service.EmailService;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -22,7 +20,7 @@ import jakarta.servlet.http.HttpServletRequest;
  *
  * @author Thanh Duong
  */
-public class LessonDB extends DB {
+public class LessonDAO extends DBConnection {
 
     public static boolean existLesson(int ID) {
         boolean ok = false;
@@ -43,7 +41,7 @@ public class LessonDB extends DB {
             //disconnect to database
             disconnect();
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(UserDB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         //return result
         return ok;
@@ -72,7 +70,7 @@ public class LessonDB extends DB {
 
             disconnect();
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(DB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return lesson;
@@ -96,22 +94,22 @@ public class LessonDB extends DB {
 
             disconnect();
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(DB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         //if not completed, check if quiz not judge yet
-        Lesson lesson = LessonDB.getLesson(lessonID);
+        Lesson lesson = LessonDAO.getLesson(lessonID);
         if (!ok) {
             if (lesson.getType() == 2) {
-                QuizResult quizResult = QuizResultDB.getLastQuizResult(userID, lessonID);
+                QuizResult quizResult = QuizResultDAO.getLastQuizResult(userID, lessonID);
                 //if not take quiz yet or not finished yet
                 if (quizResult == null || quizResult.getEndTime().after(new Date())) {
                     return false;
                 }
-                int numberOfCorrectQuestion = QuizResultDB.getQuizResultPoint(quizResult.getID());
-                int numberOfQuestion = QuestionDB.getNumberQuestionByLessonID(lessonID);
+                int numberOfCorrectQuestion = QuizResultDAO.getQuizResultPoint(quizResult.getID());
+                int numberOfQuestion = QuestionDAO.getNumberQuestionByLessonID(lessonID);
                 if (numberOfCorrectQuestion * 100 >= numberOfQuestion * 80) {
-                    LessonDB.insertLessonCompleted(userID, lessonID, request);
+                    LessonDAO.insertLessonCompleted(userID, lessonID, request);
                     return true;
                 }
             }
@@ -142,7 +140,7 @@ public class LessonDB extends DB {
 
             disconnect();
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(DB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return ans;
@@ -161,23 +159,23 @@ public class LessonDB extends DB {
             //disconnect to database
             disconnect();
 
-            Lesson lesson = LessonDB.getLesson(lessonID);
-            Mooc mooc = MoocDB.getMooc(lesson.getMoocID());
+            Lesson lesson = LessonDAO.getLesson(lessonID);
+            Mooc mooc = MoocDAO.getMooc(lesson.getMoocID());
             // Generate new certificate if completed course
-            if (CourseDB.checkCourseCompleted(userID, mooc.getCourseID())) {
+            if (CourseDAO.checkCourseCompleted(userID, mooc.getCourseID())) {
                 // if completed course
                 String certificateName = "certificate_" + mooc.getCourseID() + "_" + userID + ".pdf";
-                CourseDB.insertCertificate(userID, mooc.getCourseID(), certificateName);
+                CourseDAO.insertCertificate(userID, mooc.getCourseID(), certificateName);
                 Certificate.createCertificate(certificateName, userID, mooc.getCourseID(), request);
                 
-//                User user = UserDB.getUser(userID);
+//                User user = UserDAO.getUser(userID);
 //                EmailService.sendCompletecourse(user.getEmail(), "http://localhost:8080/swp_project_g4/public/media/certificate/" + certificateName);
             }
 
             return true;
 
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(DB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
 
         }
         return false;
@@ -192,7 +190,7 @@ public class LessonDB extends DB {
             statement.execute();
             disconnect();
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(DB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -221,7 +219,7 @@ public class LessonDB extends DB {
 
             disconnect();
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(DB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         if (lessonID < 0) {
@@ -252,7 +250,7 @@ public class LessonDB extends DB {
 
             disconnect();
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(DB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return lessonID;
@@ -282,7 +280,7 @@ public class LessonDB extends DB {
 
             disconnect();
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(DB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return lessons;
@@ -305,7 +303,7 @@ public class LessonDB extends DB {
 
             disconnect();
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(DB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return ans;
@@ -328,7 +326,7 @@ public class LessonDB extends DB {
             return true;
 
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(DB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
 
         }
         return false;
@@ -353,7 +351,7 @@ public class LessonDB extends DB {
             return true;
 
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(DB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
     }
@@ -374,7 +372,7 @@ public class LessonDB extends DB {
                 return false;
             }
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(DB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
     }

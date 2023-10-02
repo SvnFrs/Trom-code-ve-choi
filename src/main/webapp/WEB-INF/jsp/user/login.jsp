@@ -8,7 +8,7 @@
         response.sendRedirect("./");
         return;
     }
-
+    
 %>
 
 <!DOCTYPE html>
@@ -67,7 +67,7 @@
                 <script>
                     // Đợi 10 giây trước khi xóa div
                     setTimeout(function () {
-                        var messageDiv = document.getElementById('message');
+                        let messageDiv = document.getElementById('message');
                         messageDiv.parentNode.removeChild(messageDiv);
                     }, 5000);
                 </script>

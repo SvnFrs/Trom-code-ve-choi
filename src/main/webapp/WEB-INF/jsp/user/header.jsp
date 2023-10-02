@@ -5,8 +5,8 @@
 --%>
 
 <%@page import="java.net.URL"%>
-<%@page import="com.swp_project_g4.Database.CourseDB"%>
-<%@page import="com.swp_project_g4.Database.UserDB"%>
+<%@page import="com.swp_project_g4.Database.CourseDAO"%>
+<%@page import="com.swp_project_g4.Database.UserDAO"%>
 <%@page import="com.swp_project_g4.Model.User"%>
 <%@page import="com.swp_project_g4.Service.CookieServices"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -17,7 +17,7 @@
     User userHeader = null;
     if (CookieServices.checkUserLoggedIn(request.getCookies())) {
         loggedInHeader = true;
-        userHeader = UserDB.getUserByUsername(CookieServices.getUserName(request.getCookies()));
+        userHeader = UserDAO.getUserByUsername(CookieServices.getUserName(request.getCookies()));
     }
 %>
 
@@ -43,7 +43,7 @@
             <%
                 int numberOfOrderHeader = 0;
                 if (userHeader != null) {
-                    numberOfOrderHeader = CourseDB.countOrderCourse(userHeader.getID());
+                    numberOfOrderHeader = CourseDAO.countOrderCourse(userHeader.getID());
                 }
                 if (numberOfOrderHeader > 0) {
             %>

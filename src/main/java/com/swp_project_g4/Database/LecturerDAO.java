@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  *
  * @author Thanh Duong
  */
-public class LecturerDB extends DB {
+public class LecturerDAO extends DBConnection {
 
     public static Lecturer getLecturer(int userID) {
         Lecturer lecturer = null;
@@ -29,13 +29,13 @@ public class LecturerDB extends DB {
             ResultSet resultSet = statement.executeQuery();
 
             if (resultSet.next()) {
-                User user = UserDB.getUser(userID);
+                User user = UserDAO.getUser(userID);
                 lecturer = new Lecturer(user, resultSet.getInt("organizationID"));
             }
 
             disconnect();
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(DB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return lecturer;
@@ -56,7 +56,7 @@ public class LecturerDB extends DB {
 
             return true;
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(DB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
     }
@@ -77,7 +77,7 @@ public class LecturerDB extends DB {
             return true;
 
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(DB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
 
         }
         return false;
@@ -95,13 +95,13 @@ public class LecturerDB extends DB {
             disconnect();
             return getLecturer(userID) != null;
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(DB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
     }
 
     public static void main(String[] args) {
-        User user = UserDB.getUser(1);
+        User user = UserDAO.getUser(1);
         Lecturer lect = new Lecturer(user, 1);
         insertLecturer(lect);
     }

@@ -3,14 +3,15 @@
     Created on : Jun 29, 2023, 12:54:53 AM
     Author     : TTNhan
 --%>
-<%@page import="com.swp_project_g4.Database.CountryDB"%>
+<%@page import="com.swp_project_g4.Database.CountryDAO"%>
 <%@page import="com.swp_project_g4.Model.Country"%>
 <%@page import="java.text.SimpleDateFormat"%>
-<%@page import="com.swp_project_g4.Database.UserDB"%>
-<%@page import="com.swp_project_g4.Database.AdminDB"%>
+<%@page import="com.swp_project_g4.Database.UserDAO"%>
+<%@page import="com.swp_project_g4.Database.AdminDAO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.swp_project_g4.Model.User"%>
 <%@page import="com.swp_project_g4.Service.CookieServices" %>
+<%@ page import="com.swp_project_g4.Database.UserDAO" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
@@ -23,7 +24,7 @@
     int ID;
     try {
         ID = Integer.parseInt(request.getParameter("id"));
-        if (UserDB.getUser(ID) == null) {
+        if (UserDAO.getUser(ID) == null) {
             throw new Exception();
         }
     } catch (Exception e) {
@@ -57,7 +58,7 @@
                     <!-- form start -->
 
                     <%
-                        User user = UserDB.getUser(ID);
+                        User user = UserDAO.getUser(ID);
                         request.setAttribute("userID", user.getID());
                     %>
 
@@ -117,7 +118,7 @@
                                 <label for="country">country</label>
                                 <select id="country" class="form-control" name="countryID"required>
                                     <%
-                                        ArrayList<Country> countries = CountryDB.getAllCountry();
+                                        ArrayList<Country> countries = CountryDAO.getAllCountry();
                                         for (Country country : countries) {
                                     %>
                                     <option value=<%out.print(country.getID());

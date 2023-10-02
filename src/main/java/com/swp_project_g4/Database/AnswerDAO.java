@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  *
  * @author Thanh Duong
  */
-public class AnswerDB extends DB {
+public class AnswerDAO extends DBConnection {
     
     public static boolean existAnswer(int ID) {
         boolean ok = false;
@@ -36,7 +36,7 @@ public class AnswerDB extends DB {
             //disconnect to database
             disconnect();
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(UserDB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         //return result
         return ok;
@@ -64,7 +64,7 @@ public class AnswerDB extends DB {
             
             disconnect();
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(DB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return answer;
@@ -93,7 +93,7 @@ public class AnswerDB extends DB {
             
             disconnect();
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(DB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return answers;
@@ -114,7 +114,7 @@ public class AnswerDB extends DB {
             return true;
             
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(DB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
             
         }
         return false;
@@ -136,7 +136,7 @@ public class AnswerDB extends DB {
             return true;
             
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(DB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
     }
@@ -157,7 +157,7 @@ public class AnswerDB extends DB {
                 return false;
             }
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(DB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
     }

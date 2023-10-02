@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  *
  * @author Gr2
  */
-public class DB {
+public class DBConnection {
 
     static Connection conn;
     static PreparedStatement statement;
@@ -49,7 +49,7 @@ public class DB {
                 return -1;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(DB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
 
         }
 
@@ -68,7 +68,7 @@ public class DB {
             disconnect();
 
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(DB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
 
         }
     }

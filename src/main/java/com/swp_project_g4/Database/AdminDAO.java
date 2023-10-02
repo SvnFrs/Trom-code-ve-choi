@@ -4,10 +4,6 @@
  */
 package com.swp_project_g4.Database;
 
-import static com.swp_project_g4.Database.DB.conn;
-import static com.swp_project_g4.Database.DB.connect;
-import static com.swp_project_g4.Database.DB.disconnect;
-import static com.swp_project_g4.Database.DB.statement;
 import com.swp_project_g4.Service.MD5;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,7 +14,7 @@ import java.util.logging.Logger;
  *
  * @author Thanh Duong
  */
-public class AdminDB extends DB {
+public class AdminDAO extends DBConnection {
 
     public static boolean existAdmin(String username) {
         boolean ok = false;
@@ -39,7 +35,7 @@ public class AdminDB extends DB {
             //disconnect to database
             disconnect();
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(UserDB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         //return result
         return ok;
@@ -83,7 +79,7 @@ public class AdminDB extends DB {
             //disconnect to database
             disconnect();
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(UserDB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         //return result
         return status;

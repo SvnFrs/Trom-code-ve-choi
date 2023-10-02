@@ -14,7 +14,7 @@ import java.util.logging.Logger;
  *
  * @author Thanh Duong
  */
-public class OrganizationDB extends DB {
+public class OrganizationDAO extends DBConnection {
 
     public static boolean existOrganization(int ID) {
         boolean ok = false;
@@ -35,7 +35,7 @@ public class OrganizationDB extends DB {
             //disconnect to database
             disconnect();
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(UserDB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         //return result
         return ok;
@@ -62,7 +62,7 @@ public class OrganizationDB extends DB {
 
             disconnect();
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(DB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return organization;
@@ -84,7 +84,7 @@ public class OrganizationDB extends DB {
             return true;
 
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(DB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
 
         }
         return false;
@@ -107,7 +107,7 @@ public class OrganizationDB extends DB {
             return true;
 
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(DB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
     }
@@ -128,7 +128,7 @@ public class OrganizationDB extends DB {
                 return false;
             }
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(DB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
     }

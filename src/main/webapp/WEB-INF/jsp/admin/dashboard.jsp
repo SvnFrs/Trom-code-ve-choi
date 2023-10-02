@@ -4,11 +4,12 @@
     Author     : TTNhan
 --%>
 
-<%@page import="com.swp_project_g4.Database.UserDB"%>
-<%@page import="com.swp_project_g4.Database.AdminDB"%>
+<%@page import="com.swp_project_g4.Database.UserDAO"%>
+<%@page import="com.swp_project_g4.Database.AdminDAO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.swp_project_g4.Model.User"%>
 <%@page import="com.swp_project_g4.Service.CookieServices" %>
+<%@ page import="com.swp_project_g4.Database.UserDAO" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%
@@ -41,7 +42,7 @@
         <th>Modify</th>
     </tr>
     <%
-        ArrayList<User> users = UserDB.getAllUsers();
+        ArrayList<User> users = UserDAO.getAllUsers();
         for (int i = 0; i < users.size(); i++) {
 
     %>

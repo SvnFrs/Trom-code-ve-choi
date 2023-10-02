@@ -4,10 +4,6 @@
  */
 package com.swp_project_g4.Database;
 
-import static com.swp_project_g4.Database.DB.conn;
-import static com.swp_project_g4.Database.DB.connect;
-import static com.swp_project_g4.Database.DB.disconnect;
-import static com.swp_project_g4.Database.DB.statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -17,7 +13,7 @@ import java.util.logging.Logger;
  *
  * @author Thanh Duong
  */
-public class QuestionResultDB extends DB {
+public class QuestionResultDAO extends DBConnection {
 
     public static boolean CheckQuestionResult(int quizResultID, int questionID, int selectedAnswer) {
         try {
@@ -37,7 +33,7 @@ public class QuestionResultDB extends DB {
             //disconnect to database
             disconnect();
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(UserDB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         //return result
         return false;
@@ -66,7 +62,7 @@ public class QuestionResultDB extends DB {
             //disconnect to database
             disconnect();
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(UserDB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         //return result
         return true;
@@ -89,7 +85,7 @@ public class QuestionResultDB extends DB {
             return true;
 
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(DB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
 
         }
         return false;
@@ -104,7 +100,7 @@ public class QuestionResultDB extends DB {
             statement.execute();
             disconnect();
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(DB.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

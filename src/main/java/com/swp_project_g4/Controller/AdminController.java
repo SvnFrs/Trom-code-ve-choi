@@ -1,7 +1,7 @@
 package com.swp_project_g4.Controller;
 
-import com.swp_project_g4.Database.AdminDB;
-import com.swp_project_g4.Database.UserDB;
+import com.swp_project_g4.Database.AdminDAO;
+import com.swp_project_g4.Database.UserDAO;
 import com.swp_project_g4.Model.User;
 import com.swp_project_g4.Service.CookieServices;
 import com.swp_project_g4.Service.JwtUtil;
@@ -32,7 +32,7 @@ public class AdminController {
 //    @ResponseBody
     public String loginPost(HttpServletRequest request, HttpServletResponse response, @RequestParam String username, @RequestParam String password) {
 //        model.addAttribute("title", "Index!");
-        int status = AdminDB.checkAdmin(username, password, false);
+        int status = AdminDAO.checkAdmin(username, password, false);
         if (status == 1) {
             request.getSession().setAttribute("error", "Username not exist!");
             return "redirect:./login";
@@ -95,7 +95,7 @@ public class AdminController {
         }
         
         try {
-            boolean ok = UserDB.updateUser(user);
+            boolean ok = UserDAO.updateUser(user);
             if (ok) {
                 request.getSession().setAttribute("success", "Update User information succeed!");
             } else {
@@ -118,7 +118,7 @@ public class AdminController {
         }
         
         try {
-            if (UserDB.deleteUser(Integer.parseInt(id))) {
+            if (UserDAO.deleteUser(Integer.parseInt(id))) {
                 request.getSession().setAttribute("success", "Delete user succeed!");
             } else {
                 request.getSession().setAttribute("error", "Delete user failed!");

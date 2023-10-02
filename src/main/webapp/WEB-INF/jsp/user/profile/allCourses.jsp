@@ -17,7 +17,7 @@
             %></h3>
 
         <%
-            ArrayList<Course> courses = CourseDB.getAllPurchasedCourses(user.getID());
+            ArrayList<Course> courses = CourseDAO.getAllPurchasedCourses(user.getID());
             for (Course course : courses) {
         %>
 
@@ -41,8 +41,8 @@
                 </a>
                 <%
                     if (!guest) {
-                        int sumTimeOfCourse = CourseDB.getSumTimeOfCourse(course.getID());
-                        int sumOfCompletedTime = CourseDB.getSumTimeCompletedOfCourse(user.getID(), course.getID());
+                        int sumTimeOfCourse = CourseDAO.getSumTimeOfCourse(course.getID());
+                        int sumOfCompletedTime = CourseDAO.getSumTimeCompletedOfCourse(user.getID(), course.getID());
                         int percent = 100;
                         if (sumTimeOfCourse != 0) {
                             percent = (int) 100f * sumOfCompletedTime / sumTimeOfCourse;
@@ -58,8 +58,8 @@
                     <div class="completed">
                         <p>Completed</p>
                         <%
-                            if (CourseDB.checkCertificate(user.getID(), course.getID())) {
-                                String certificateName = CourseDB.getCertificateName(user.getID(), course.getID());
+                            if (CourseDAO.checkCertificate(user.getID(), course.getID())) {
+                                String certificateName = CourseDAO.getCertificateName(user.getID(), course.getID());
                         %>
                         <a href="/public/media/certificate/<%out.print(certificateName);%>" target="_blank">View certificate</a>
                         <%
@@ -89,7 +89,7 @@
 
         <%
             if (lecturer != null) {
-                courses = CourseDB.getAllCreatedCourses(user.getID());
+                courses = CourseDAO.getAllCreatedCourses(user.getID());
                 for (Course course : courses) {
         %>
 

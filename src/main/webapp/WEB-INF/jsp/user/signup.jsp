@@ -6,7 +6,7 @@
 
 <%@page import="java.util.List"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page import="com.swp_project_g4.Database.CountryDB"%>
+<%@page import="com.swp_project_g4.Database.CountryDAO"%>
 <%@page import="com.swp_project_g4.Model.Country"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.swp_project_g4.Model.User"%>
@@ -73,7 +73,7 @@
                     </div>
 
                     <%
-                        ArrayList<Country> countries = CountryDB.getAllCountry();
+                        ArrayList<Country> countries = CountryDAO.getAllCountry();
                         request.getSession().setAttribute("countries", countries);
                     %>
 

@@ -4,26 +4,26 @@
     Author     : TTNhan
 --%>
 
-<%@page import="com.swp_project_g4.Database.QuestionResultDB"%>
+<%@page import="com.swp_project_g4.Database.QuestionResultDAO"%>
 <%@page import="com.swp_project_g4.Model.Question"%>
 <%@page import="java.util.Collections"%>
-<%@page import="com.swp_project_g4.Database.AnswerDB"%>
+<%@page import="com.swp_project_g4.Database.AnswerDAO"%>
 <%@page import="com.swp_project_g4.Model.Answer"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <p><b>Choose all correct answer:</b></p>
 <%
 //    Question question = null;
-    ArrayList<Answer> answers = AnswerDB.getAnswersByQuestionID(question.getID());
+    ArrayList<Answer> answers = AnswerDAO.getAnswersByQuestionID(question.getID());
     if (!quizFinished) {
         Collections.shuffle(answers);
     }
     for (Answer answer : answers) {
         String answerName = "answer" + answer.getID();
-        boolean checked = QuestionResultDB.CheckQuestionResult(quizResult.getID(), question.getID(), answer.getID());
+        boolean checked = QuestionResultDAO.CheckQuestionResult(quizResult.getID(), question.getID(), answer.getID());
         String correctClass = "";
         if (quizFinished && checked) {
-            correctClass = AnswerDB.getAnswer(answer.getID()).isCorrect() ? "correct" : "incorrect";
+            correctClass = AnswerDAO.getAnswer(answer.getID()).isCorrect() ? "correct" : "incorrect";
         }
 %>
 <label for="<%out.print(answerName);%>" <%if (correctClass != "") {

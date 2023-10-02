@@ -13,10 +13,10 @@ import com.itextpdf.text.PageSize;
 import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfWriter;
-import com.swp_project_g4.Database.CourseDB;
-import com.swp_project_g4.Database.LecturerDB;
-import com.swp_project_g4.Database.OrganizationDB;
-import com.swp_project_g4.Database.UserDB;
+import com.swp_project_g4.Database.CourseDAO;
+import com.swp_project_g4.Database.LecturerDAO;
+import com.swp_project_g4.Database.OrganizationDAO;
+import com.swp_project_g4.Database.UserDAO;
 import com.swp_project_g4.Model.Course;
 import com.swp_project_g4.Model.Organization;
 import com.swp_project_g4.Model.User;
@@ -115,8 +115,8 @@ public class Certificate {
         
         srcPath = request.getSession().getServletContext().getRealPath("/") + "../../src/main/webapp/public";
         
-        User user = UserDB.getUser(userID);
-        Course course = CourseDB.getCourse(courseID);
+        User user = UserDAO.getUser(userID);
+        Course course = CourseDAO.getCourse(courseID);
         String imagePath = srcPath + "/assets/imgs/certificate/Yojihan_Certificate.png"; // Provide the path to your image file
         
         String outputFilename = srcPath + "/media/certificate/" + certificateName;
@@ -142,14 +142,14 @@ public class Certificate {
             addUserName(user.getFirstName() + " " + user.getLastName(), contentByte, document);
             addCourseName(course.getTitle(), contentByte, document);
 
-            User lecturer = LecturerDB.getLecturer(course.getLecturerID());
+            User lecturer = LecturerDAO.getLecturer(course.getLecturerID());
             if (lecturer != null) {
                 addLecturerName(lecturer.getFirstName() + " " + lecturer.getLastName(), contentByte, document);
             }
 
             addDate(contentByte, document);
 
-            Organization organization = OrganizationDB.getOrganization(course.getOrganizationID());
+            Organization organization = OrganizationDAO.getOrganization(course.getOrganizationID());
             addOrganizationName(organization.getName(), contentByte, document);
 
             document.close();
